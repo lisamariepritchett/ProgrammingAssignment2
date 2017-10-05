@@ -1,9 +1,11 @@
-# Two functions makeCacheMatrix and cacheInverse work together to cache the inverse of a matrix
-# makeCacheMatrix returns a named list to set and get the input matrix and its inverse
-# cacheInverse either returns the cached inverse if it exists or calculates the Inverse and Caches it.
+# Two functions makeCacheMatrix and cacheInverse work together to cache the 
+# inverse of a matrix.makeCacheMatrix returns a named list to set and get the 
+# input matrix and its inverse cacheInverse either returns the cached inverse 
+# if it exists or calculates the Inverse and Caches it.
 
 
-#makeCacheMatrix returns a named list to get and set the value of x and its inverse.
+# makeCacheMatrix returns a named list for getting and setting x and the
+# inverse of x
 makeCacheMatrix <- function(x = matrix()){
     inv <- NULL
     
@@ -24,8 +26,8 @@ makeCacheMatrix <- function(x = matrix()){
 
 
 
-# cacheInverse works with makeCacheMatrix t0 return the inverse of a matrix 
-# by getting it from cache or calculating it.
+# cacheInverse works with makeCacheMatrix to return the inverse of a 
+# matrix by getting it from cache or calculating it.
 cacheInverse <- function(x, ...){
     #get inverse from the named x-list
     inv <- x$getinv()
@@ -36,7 +38,7 @@ cacheInverse <- function(x, ...){
         return(inv)
     }
     
-    #otherwise, get the data, calculate its inverse, cache the value and return
+    #otherwise, get the data, calculate its inverse and cashe the value
     data <- x$get()
     inv <- solve(data, ...)
     x$setinv(inv)
