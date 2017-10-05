@@ -5,38 +5,27 @@
 
 #makeCacheMatrix returns a named list to get and set the value of x and its inverse.
 makeCacheMatrix <- function(x = matrix()){
+    inv <- NULL
     
-    # initalize inverse
-    inv <- NULL                     
-    
-    # make set function to set x and reset the inverse to NULL
+    # create get and set functions
     set <- function(new_matrix) {   
         x <<- new_matrix
         inv <<- NULL
     }
-    
-    #make function to retrun x
     get <- function() x             
-    
-    #make setinv function to update inverse value
     setinv <- function(inverse) {   
         inv <<- inverse
     }
-    
-    #make getinv to return value of inverse
     getinv <- function() inv        
     
     #make named list
     list(set=set, get=get, setinv = setinv, getinv=getinv) 
 }
 
-data <- matrix(runif(9,5,10),3,3)
-x <- makeCacheMatrix(data)
 
 
-
-#make cacheInverse, a function that works with makeCacheMatrix ti return 
-#the inverse of a matrix by getting it from cache or calculating it.
+# cacheInverse works with makeCacheMatrix t0 return the inverse of a matrix 
+# by getting it from cache or calculating it.
 cacheInverse <- function(x, ...){
     #get inverse from the named x-list
     inv <- x$getinv()
